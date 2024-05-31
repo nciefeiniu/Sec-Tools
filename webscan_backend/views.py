@@ -1,4 +1,3 @@
-
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
@@ -10,10 +9,11 @@ from .plugins.common.common import success, error, addslashes, getdomain, getdom
 import time
 from .plugins.common.common import getuserip
 from .plugins.loginfo.loginfo import LogHandler
+
 MYLOGGER = LogHandler(time.strftime("%Y-%m-%d", time.localtime()) + 'log')
 
 
-@csrf_exempt     # 标识一个视图可以被跨域访问
+@csrf_exempt  # 标识一个视图可以被跨域访问
 @login_required  # 用户登陆系统才可以访问
 def port_scan(request):
     """
@@ -23,9 +23,12 @@ def port_scan(request):
     ip = request.POST.get('ip')
     if check_ip(ip):
         result = ScanPort(ip).pool()
-        MYLOGGER.info('M:' + request.method + ' P:' + request.path + ' UPOST:' + str(request.POST) + ' SC:200 UIP:' + getuserip(request) + ' RDATA:' + str(result))
+        MYLOGGER.info(
+            'M:' + request.method + ' P:' + request.path + ' UPOST:' + str(request.POST) + ' SC:200 UIP:' + getuserip(
+                request) + ' RDATA:' + str(result))
         return success(200, result, 'ok!')
     return error(400, '请填写正确的IP地址', 'error')
+
 
 @csrf_exempt
 def info_leak(request):
@@ -36,9 +39,12 @@ def info_leak(request):
     url = check_url(request.POST.get('url'))
     if url:
         result = get_infoleak(url)
-        MYLOGGER.info('M:' + request.method + ' P:' + request.path + ' UPOST:' + str(request.POST) + ' SC:200 UIP:' + getuserip(request) + ' RDATA:' + str(result))
+        MYLOGGER.info(
+            'M:' + request.method + ' P:' + request.path + ' UPOST:' + str(request.POST) + ' SC:200 UIP:' + getuserip(
+                request) + ' RDATA:' + str(result))
         return success(200, result, 'ok')
     return error(400, '请填写正确的URL地址', 'error')
+
 
 @csrf_exempt
 def getwebsideinfo(request):
@@ -54,6 +60,7 @@ def getwebsideinfo(request):
         return error(400, '未找到旁站信息！', 'error')
     return error(400, '请填写正确的IP地址', 'error')
 
+
 @csrf_exempt
 def baseinfo(request):
     """
@@ -63,9 +70,12 @@ def baseinfo(request):
     url = check_url(request.POST.get('url'))
     if url:
         res = getbaseinfo(url)
-        MYLOGGER.info('M:' + request.method + ' P:' + request.path + ' UPOST:' + str(request.POST) + ' SC:200 UIP:' + getuserip(request) + ' RDATA:' + str(res))
+        MYLOGGER.info(
+            'M:' + request.method + ' P:' + request.path + ' UPOST:' + str(request.POST) + ' SC:200 UIP:' + getuserip(
+                request) + ' RDATA:' + str(res))
         return success(res['code'], res, res['msg'])
     return error(400, '请填写正确的URL地址', '请输入正确的网址， 例如：http://example.cn')
+
 
 @csrf_exempt
 def webweight(request):
@@ -94,6 +104,7 @@ def iplocating(request):
         return success(200, result, 'ok')
     return error(400, '请填写正确的IP地址', 'error')
 
+
 @csrf_exempt
 def isexistcdn(request):
     """
@@ -112,6 +123,7 @@ def isexistcdn(request):
         return success(200, result_str, 'Success!')
     return error(400, '请填写正确的IP地址', 'error')
 
+
 @csrf_exempt
 def is_waf(request):
     """
@@ -122,6 +134,7 @@ def is_waf(request):
     if url:
         return success(200, getwaf(url), 'ok')
     return error(400, '请填写正确的URL地址', 'error')
+
 
 @csrf_exempt
 def what_cms(request):
@@ -137,6 +150,7 @@ def what_cms(request):
         return success(200, result, 'ok')
     return error(400, '请填写正确的URL地址', 'error')
 
+
 @csrf_exempt
 def _subdomain(request):
     '''子域名扫描'''
@@ -146,8 +160,8 @@ def _subdomain(request):
     if domain:
         result = get_subdomain(domain)
         print(len(result))
-        MYLOGGER.info('M:' + request.method + ' P:' + request.path + ' UPOST:' + str(request.POST) + ' SC:200 UIP:' + getuserip(request) + ' RDATA:' + str(result))
+        MYLOGGER.info(
+            'M:' + request.method + ' P:' + request.path + ' UPOST:' + str(request.POST) + ' SC:200 UIP:' + getuserip(
+                request) + ' RDATA:' + str(result))
         return success(200, result, 'ok')
     return error(400, '请填写正确的URL地址', 'error')
-
-
