@@ -18,7 +18,7 @@ def get_side_info(ip):
     :param ip:
     :return:
     """
-    api_url = 'http://api.webscan.cc/?action=query&ip={}'.format(ip)
+    api_url = 'https://api.webscan.cc/?action=query&ip={}'.format(ip)
     try:
         html = requests.get(api_url, headers=header, timeout=8)
         text = html.text

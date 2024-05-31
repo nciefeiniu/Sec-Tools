@@ -7,12 +7,12 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def welcome(request):
-    '''欢迎页'''
+    """欢迎页"""
     return render(request, 'other/welcome.html')
 
 
 def index(request):
-    '''主页'''
+    """主页"""
     cms_items = FingerPrint.objects.all()
     categories = FpCategory.objects.all()
     # 取出要添加到导航栏的分类
@@ -31,17 +31,17 @@ def index(request):
 
 
 def about(request):
-    '''关于'''
+    """关于"""
     return render(request, 'other/about.html')
 
 
 def docs(request):
-    '''文档'''
+    """文档"""
     return render(request, 'other/docs.html')
 
 
 def navigation(request):
-    '''安全导航'''
+    """安全导航"""
     # 取出要添加到导航栏的分类
     category_nav = Category.objects.filter(add_menu=True).order_by('sort')
     # 取出条目
@@ -59,7 +59,7 @@ def test(request):
 
 
 def testfp(request):
-    '''测试指纹'''
+    """测试指纹"""
     # 取出要添加到导航栏的分类
     category_nav = Category.objects.filter(add_menu=True).order_by('sort')
     # 取出条目
@@ -72,7 +72,7 @@ def testfp(request):
 
 @login_required
 def fingerprint(request):
-    '''指纹识别'''
+    """指纹识别"""
     cms_items = FingerPrint.objects.all()
     categories = FpCategory.objects.all()
     context = {
@@ -85,7 +85,7 @@ def fingerprint(request):
 
 @login_required
 def portscan(request):
-    '''端口扫描'''
+    """端口扫描"""
     portlists = PortList.objects.all()
     context = {'portlists': portlists}
     return render(request, 'scan/scan_portscan.html', context)
@@ -93,17 +93,21 @@ def portscan(request):
 
 @login_required
 def infoleak(request):
-    '''信息泄露'''
+    """
+    信息泄露
+    """
     return render(request, 'scan/scan_infoleak.html')
 
 
 @login_required
 def webside(request):
-    '''旁站扫描'''
+    """
+    旁站扫描
+    """
     return render(request, 'scan/scan_webside.html')
 
 
 @login_required
 def subdomain(request):
-    '''子域名扫描'''
+    """子域名扫描"""
     return render(request, 'scan/scan_subdomain.html')

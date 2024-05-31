@@ -134,6 +134,7 @@
             $.post('/webscan_backend/web_side',{
                 ip: ip
             }, function(data){
+                console.log('resp code: ', data)
                 if(data.code === 200){
                     $('tbody tr:first').html("<td class='table-primary'><strong>网站标题</strong></td><td class='table-primary'><strong>同IP网站URL</strong></td>");
                     $.each(data.data, function(index, obj){
