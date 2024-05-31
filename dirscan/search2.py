@@ -1,14 +1,17 @@
 # -*- coding: utf-8 -*-
+import os
 
 from django.shortcuts import render
 from django.views.decorators import csrf
 from django.contrib.auth.decorators import login_required
 
+if not os.path.exists('./dirscan/dirsearch/logs'):
+    os.mkdir('./dirscan/dirsearch/logs')
+
+
 # 接收POST请求数据
 @login_required
 def search_post(request):
-    import os
-
     parm = []  # 勾选参数列表
     base_file_path = 'dirscan/dirsearch/reports/target.json'  # json文件地址
     fixes = {}
@@ -86,5 +89,3 @@ def search_post(request):
         os.system(c)
 
     return render(request, "dir-scan.html", fixes)
-
-

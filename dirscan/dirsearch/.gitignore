@@ -1,6 +1,3 @@
-/reports/
-logs/
-
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -11,3 +8,5 @@ __pycache__/
 db/test.txt
 
 default.conf
+
+reports/*.json
