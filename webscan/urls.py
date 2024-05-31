@@ -13,7 +13,7 @@ from webscan import views
 
 urlpatterns = [
     # 欢迎页
-    path('', views.welcome, name='welcome'),
+    path('', views.index, name='welcome'),
     #首页
     path('index', views.index, name='index'),
     #文档页
