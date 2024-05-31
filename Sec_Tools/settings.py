@@ -15,7 +15,6 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
@@ -83,7 +82,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Sec_Tools.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
@@ -93,7 +91,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -113,7 +110,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
@@ -127,26 +123,24 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
 LOGIN_URL = '/login/'
-MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-#SimpleUi后台设置
-#SIMPLEUI_LOGO = 'https://jwt1399.top//medias/logo.png' #登录页和后台logo
-SIMPLEUI_LOGO = 'media/icons/favicon.ico' #登录页和后台logo
-SIMPLEUI_ANALYSIS = False #是否向SimpleUi收集分析信息
-SIMPLEUI_LOADING = False #是否打开Loading遮罩层
-SIMPLEUI_LOGIN_PARTICLES = True #登录页粒子动画
-SIMPLEUI_STATIC_OFFLINE = True #是否以脱机模式加载静态资源，为True的时候将默认从本地读取所有资源，即使没有联网一样可以。适合内网项目，不填该项或者为False的时候，默认从第三方的cdn获取
-SIMPLEUI_HOME_INFO = False #是否打开SimpleUi服务器信息
-SIMPLEUI_DEFAULT_THEME = 'simpleui.css' #默认主题 https://simpleui.88cto.com/docs/simpleui/QUICK.html#%E9%BB%98%E8%AE%A4%E4%B8%BB%E9%A2%98
-SIMPLEUI_HOME_QUICK = True #后台页面是否显示最近动作
-
+# SimpleUi后台设置
+# SIMPLEUI_LOGO = 'https://jwt1399.top//medias/logo.png' #登录页和后台logo
+SIMPLEUI_LOGO = 'media/icons/favicon.ico'  # 登录页和后台logo
+SIMPLEUI_ANALYSIS = False  # 是否向SimpleUi收集分析信息
+SIMPLEUI_LOADING = False  # 是否打开Loading遮罩层
+SIMPLEUI_LOGIN_PARTICLES = True  # 登录页粒子动画
+SIMPLEUI_STATIC_OFFLINE = True  # 是否以脱机模式加载静态资源，为True的时候将默认从本地读取所有资源，即使没有联网一样可以。适合内网项目，不填该项或者为False的时候，默认从第三方的cdn获取
+SIMPLEUI_HOME_INFO = False  # 是否打开SimpleUi服务器信息
+SIMPLEUI_DEFAULT_THEME = 'simpleui.css'  # 默认主题 https://simpleui.88cto.com/docs/simpleui/QUICK.html#%E9%BB%98%E8%AE%A4%E4%B8%BB%E9%A2%98
+SIMPLEUI_HOME_QUICK = True  # 后台页面是否显示最近动作
 
 # AWVS URL和API key  服务器版本
 API_URL = 'https://192.168.31.6:3443'
@@ -154,28 +148,28 @@ API_KEY = '1986ad8c0a5b3df4d7028d5f3c06e936c17c36bdc059f4d809172740790c316a5'
 
 # 重设密码功能邮箱配置
 EMAIL_HOST = '***your**'
-EMAIL_PORT = 25                             # 发件箱的smtp服务器端口
-EMAIL_HOST_USER = '***your**'       # 你的邮箱账号
-EMAIL_HOST_PASSWORD ="***your**"     # 邮箱授权码
-EMAIL_USE_TLS = True                        # 这里必须是 True，否则发送不成功
-EMAIL_FROM = '***your**'            # 你的邮箱账号
-DEFAULT_FROM_EMAIL = '***your**'    # 你的邮箱账号
+EMAIL_PORT = 25  # 发件箱的smtp服务器端口
+EMAIL_HOST_USER = '***your**'  # 你的邮箱账号
+EMAIL_HOST_PASSWORD = "***your**"  # 邮箱授权码
+EMAIL_USE_TLS = True  # 这里必须是 True，否则发送不成功
+EMAIL_FROM = '***your**'  # 你的邮箱账号
+DEFAULT_FROM_EMAIL = '***your**'  # 你的邮箱账号
 
-#自定义后台菜单
+# 自定义后台菜单
 SIMPLEUI_CONFIG = {
-    'system_keep': False,  #去除系统模块
+    'system_keep': False,  # 去除系统模块
     'menus': [{
         'name': '导航管理',
         'icon': 'fas fa-book-open',
         'models': [{
-                'name': '分类',
-                'icon': 'fas fa-list',
-                'url': '/admin/webscan/category/'
-            },{
-                'name': '条目',
-                'icon': 'fas fa-tags',
-                'url': '/admin/webscan/item/'
-            }]
+            'name': '分类',
+            'icon': 'fas fa-list',
+            'url': '/admin/webscan/category/'
+        }, {
+            'name': '条目',
+            'icon': 'fas fa-tags',
+            'url': '/admin/webscan/item/'
+        }]
     }, {
         'name': '指纹组件',
         'icon': 'fas fa-fingerprint',
@@ -204,7 +198,7 @@ SIMPLEUI_CONFIG = {
             'name': '用户',
             'icon': 'fa fa-user',
             'url': 'auth/user/'
-        },{
+        }, {
             'name': '权限组',
             'icon': 'fas fa-users-cog',
             'url': 'auth/group/'
@@ -223,4 +217,3 @@ SIMPLEUI_CONFIG = {
         }]
     }]
 }
-
